@@ -123,7 +123,7 @@ func (c *commandHelp) execute() error {
 }
 
 func parseCmd() (command, error) {
-	blockSize := uint32(*flag.Int("block-size", 32, "size of the block in bytes"))
+	blockSize := flag.Int("block-size", 32, "size of the block in bytes")
 	flag.Parse()
 	values := flag.Args()
 	if len(values) == 0 {
@@ -137,7 +137,7 @@ func parseCmd() (command, error) {
 		return &commandSignature{
 			baseFilePath:      values[1],
 			signatureFilePath: values[2],
-			blockLength:       blockSize,
+			blockLength:       uint32(*blockSize),
 		}, nil
 	case deltaCmd:
 		if len(values) != 4 {
