@@ -123,7 +123,7 @@ func (c *commandHelp) execute() error {
 }
 
 func parseCmd() (command, error) {
-	blockSize := flag.Int("block-size", 32, "size of the block in bytes")
+	blockSize := flag.Int("block-size", 2<<10, "size of the block in bytes")
 	flag.Parse()
 	values := flag.Args()
 	if len(values) == 0 {
